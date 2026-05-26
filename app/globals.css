@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: hwb(249 1% 23%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: hsl(241, 98%, 38%);
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .stars-background {
+    background:
+      radial-gradient(circle at 50% 20%, rgba(14, 165, 233, 0.18), transparent 32%),
+      radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.16), transparent 35%);
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 9999px;
+    background: white;
+    box-shadow:
+      0 0 8px rgba(255, 255, 255, 0.8),
+      0 0 18px rgba(34, 211, 238, 0.55);
+    animation:
+      star-glow var(--star-duration, 12s) ease-in-out infinite,
+      star-drift var(--star-duration, 12s) ease-in-out infinite;
+  }
+
+  .shooting-star {
+    position: absolute;
+    inline-size: 120px;
+    block-size: 2px;
+    background: linear-gradient(90deg, transparent, #67e8f9, white, transparent);
+    opacity: 0;
+    transform: rotate(-25deg);
+    filter: drop-shadow(0 0 10px #22d3ee);
+    animation: shooting-star 9s ease-in-out infinite;
+  }
+
+  .shooting-star-one {
+    inset-block-start: 18%;
+    inset-inline-start: -15%;
+    animation-delay: 1s;
+  }
+
+  .shooting-star-two {
+    inset-block-start: 38%;
+    inset-inline-start: -20%;
+    animation-delay: 4s;
+  }
+
+  .shooting-star-three {
+    inset-block-start: 62%;
+    inset-inline-start: -25%;
+    animation-delay: 7s;
+  }
+
+  @keyframes star-glow {
+
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.6);
+    }
+  }
+
+  @keyframes star-drift {
+
+    0%,
+    100% {
+      translate: 0 0;
+    }
+
+    50% {
+      translate: 14px -18px;
+    }
+  }
+
+  @keyframes shooting-star {
+    0% {
+      opacity: 0;
+      transform: translateX(0) translateY(0) rotate(-25deg);
+    }
+
+    12% {
+      opacity: 1;
+    }
+
+    28% {
+      opacity: 0;
+      transform: translateX(150vw) translateY(45vh) rotate(-25deg);
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
