@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Rocket,
   Mail,
@@ -123,12 +124,12 @@ export default function IAMAnimatedWebsite() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <a
-              href="#projects"
+            <Link
+              href="/dimension-walker"
               className="rounded-2xl bg-cyan-500 px-10 py-5 text-xl font-bold text-black shadow-[0_0_30px_rgba(0,255,255,0.5)] transition hover:scale-105 hover:bg-cyan-400"
             >
               Explore Projects 🚀
-            </a>
+            </Link>
 
             <a
               href="mailto:kinglordian1@gmail.com"
